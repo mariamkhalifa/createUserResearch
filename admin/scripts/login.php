@@ -18,43 +18,55 @@ function login($username, $password, $ip){
     );
 
     if($user_set->fetchColumn()>0){
-        //Check if user and password match
-        //problems: no-encryption, people could have same user and pass, SQL injection
-        $check_match_query = 'SELECT * FROM `tbl_user` WHERE user_name =:username AND user_pass =:password';
-        $user_match = $pdo->prepare($check_match_query);
-        $user_match->execute(
-            array(
-                ':username'=>$username,
-                ':password'=>$password
-            )
-        );
-        // if($user_match->fetchColumn()>0){ => if fetched result is larger than 0 (use if using COUNT(*))
-       while($founduser = $user_match->fetch(PDO::FETCH_ASSOC)){
-           $id = $founduser['user_id'];
+        while($user = $user_set->fetch(PDO::FETCH_ASSOC)){
+            $verified_password = $user['pass'];
+            if(password_verify($password,$verified_password)){
+                //Check if user and password match
+                //problems: no-encryption, people could have same user and pass, SQL injection
+                $check_match_query = 'SELECT * FROM `tbl_user` WHERE user_name =:username AND user_pass =:password';
+                $user_match = $pdo->prepare($check_match_query);
+                $user_match->execute(
+                    array(
+                        ':username'=>$username,
+                        ':password'=>$verified_password
+                    )
+                );
+                // if($user_match->fetchColumn()>0){ => if fetched result is larger than 0 (use if using COUNT(*))
+                while($founduser = $user_match->fetch(PDO::FETCH_ASSOC)){
+                    $id = $founduser['user_id'];
 
-           $_SESSION['user_id'] = $id;
-           $_SESSION['user_name'] = $founduser['user_fname'];
+                    $_SESSION['user_id'] = $id;
+                    $_SESSION['user_name'] = $founduser['user_fname'];
 
-           // TODO Update user_tbl and set the user_ip column to be $ip
-           // write a sql query prepare
-            $check_match_query = 'UPDATE `tbl_user` SET user_ip = :user_ip WHERE user_id = :id';
-            $user_match = $pdo->prepare($check_match_query);
-            $user_match->execute(
-                array(
-                    ':user_ip'=>$ip,
-                    ':id'=>$id
-                )
-            );
-       }
-
-       if(isset($id)){
-           redirect_to('index.php');
-        }else{
-            return 'Incorrect password';
+                    // TODO Update user_tbl and set the user_ip column to be $ip
+                    // write a sql query prepare
+                    $check_match_query = 'UPDATE `tbl_user` SET user_ip = :user_ip WHERE user_id = :id';
+                    $user_match = $pdo->prepare($check_match_query);
+                    $user_match->execute(
+                        array(
+                            ':user_ip'=>$ip,
+                            ':id'=>$id
+                        )
+                    );
+                }
+            }else{
+                echo 'Passwords do not match :(';
+                exit;
+            }
+            
         }
-     }else{
-        return 'User does not exist';
-    }
+        
+
+        
+
+    //    if(isset($id)){
+    //        redirect_to('index.php');
+    //     }else{
+    //         return 'Incorrect password';
+    //     }
+    // }else{
+    //     return 'User does not exist';
+    // }
 
 }
 
