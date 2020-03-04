@@ -28,14 +28,28 @@ function login($username, $password, $ip){
         //     $verified_password = $password;
         // }
 
-        $check_match_query = 'SELECT * FROM `tbl_user` WHERE user_name =:username AND user_pass =:password';
-        $user_match = $pdo->prepare($check_match_query);
+        $verify_password_query = 'SELECT * FROM `tbl_user` WHERE user_name =:username';
+        $user_match =  $pdo->prepare($verify_password_query);
         $user_match->execute(
             array(
-                ':username'=>$username,
-                ':password'=>$password
+                ':username'=>$username
             )
         );
+        while($founduser = $user_match->fetch(PDO::FETCH_ASSOC)){
+            $decrypted_password = password_verify($password, $founduser['user_pass']);
+
+            $check_match_query = 'SELECT * FROM `tbl_user` WHERE user_name =:username AND user_pass =:password';
+            $user_match = $pdo->prepare($check_match_query);
+            $user_match->execute(
+                array(
+                    ':username'=>$username,
+                    ':password'=>$password
+                )
+            );
+            echo $founduser['user_pass'] . '  '; 
+            echo $decrypted_password;
+        }
+
         // if($user_match->fetchColumn()>0){ => if fetched result is larger than 0 (use if using COUNT(*))
        while($founduser = $user_match->fetch(PDO::FETCH_ASSOC)){
            $id = $founduser['user_id'];

@@ -41,7 +41,9 @@ function createUser($fname, $username, $email) {
             ':password'=>$hashed_password,
             ':email'=>$email
         )
-    ); 
+    );
+
+    echo $fname . ' ' . $username . ' ' . $new_password;
 
     // based on the execution result, if everything goes through
     // redirect to the index.php
@@ -64,7 +66,7 @@ function createUser($fname, $username, $email) {
         $msg .= '<p>Your password is: <?php echo $password; ?></p>';
         $msg .= '<p>This is the url where you can login: http://localhost/movies_cms/admin/admin_login.php</p>';
         $msg .= '</body></html>';
-        mail($recipient, $subject, $msg, $headers);
+        //mail($recipient, $subject, $msg, $headers);
     }else{
         return 'This individul sucks! But they are trying their best :)';
     }
