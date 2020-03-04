@@ -7,6 +7,9 @@ Generate Password
 ----------------------------------
 https://stackoverflow.com/questions/6101956/generating-a-random-password-in-php
 https://gist.github.com/zyphlar/7217f566fc83a9633959
+https://www.php.net/manual/en/function.openssl-random-pseudo-bytes.php
+https://www.php.net/manual/en/function.substr.php
+https://www.php.net/manual/en/function.preg-replace.php
 
 ----------------------------------
 Encrypt and Store Password
@@ -19,3 +22,7 @@ https://auth0.com/blog/hashing-passwords-one-way-road-to-security/
 https://stackoverflow.com/questions/5584620/what-is-salt-and-how-do-i-use-it
 https://stackoverflow.com/questions/30279321/how-to-use-phps-password-hash-to-hash-and-verify-passwords
 https://www.geeksforgeeks.org/php-md5-sha1-hash-functions/
+
+https://stackoverflow.com/questions/33108720/password-hash-returns-different-value-every-time/33109078
+https://stackoverflow.com/questions/25380204/matching-users-password-with-hashed-password-stored-in-db
+https://www.php.net/manual/en/function.password-verify.php

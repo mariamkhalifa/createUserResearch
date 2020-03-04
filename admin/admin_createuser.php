@@ -31,8 +31,6 @@
         <input type="text" name="fname" value=""><br>
         <label>Username::</label>
         <input type="text" name="username" value=""><br>
-        <!-- <label>Password:</label>
-        <input type="text" name="password" value=""><br> -->
         <label>Email:</label>
         <input type="email" name="email" value=""><br>
         <button type="submit" name="submit">Create User</button>
