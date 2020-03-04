@@ -41,7 +41,9 @@ function createUser($fname, $username, $email) {
             ':password'=>$hashed_password,
             ':email'=>$email
         )
-    ); 
+    );
+
+    echo $fname . ' ' . $username . ' ' . $new_password;
 
     // based on the execution result, if everything goes through
     // redirect to the index.php
