@@ -50,7 +50,6 @@ function createUser($fname, $username, $email) {
     // otherwise, return an error message
 
     if($create_user_result) {
-        //redirect_to('index.php');
         $from = "mariam.khalifa.gabr@gmail.com";
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers = "Content-type: text/html\r\n";
@@ -63,13 +62,12 @@ function createUser($fname, $username, $email) {
         $msg .= '<h1>Hello <?php echo $fname; ?></h1>';
         $msg .= '<p>The website admin has created an account for you.</p>';
         $msg .= '<p>Your username is: <?php echo $username; ?></p>';
-        $msg .= '<p>Your password is: <?php echo $password; ?></p>';
-        $msg .= '<p>This is the url where you can login: http://localhost/movies_cms/admin/admin_login.php</p>';
+        $msg .= '<p>Your password is: <?php echo $new_password; ?></p>';
+        $msg .= '<p>This is the url where you can login: http://localhost:8888/Chang_K_Khalifa_M_3014_r2/admin/admin_login.php</p>';
         $msg .= '</body></html>';
-        //mail($recipient, $subject, $msg, $headers);
+        mail($recipient, $subject, $msg, $headers);
+        return $create_user_message = '<p>Thank you. We have sent an email to the new user with their login information!</p><a href="index.php">Go Back</a>';
     }else{
         return 'This individul sucks! But they are trying their best :)';
     }
-
-    
 }
