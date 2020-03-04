@@ -59,10 +59,10 @@ function createUser($fname, $username, $email) {
         $recipient = $email;
         $subject = "Hello, Your Account Info.";
         $msg = '<html><body>';
-        $msg .= '<h1>Hello <?php echo $fname; ?></h1>';
+        $msg .= '<h1>Hello '.$fname.'</h1>';
         $msg .= '<p>The website admin has created an account for you.</p>';
-        $msg .= '<p>Your username is: <?php echo $username; ?></p>';
-        $msg .= '<p>Your password is: <?php echo $new_password; ?></p>';
+        $msg .= '<p>Your username is: '.$username.'</p>';
+        $msg .= '<p>Your password is: '.$new_password.'</p>';
         $msg .= '<p>This is the url where you can login: http://localhost:8888/Chang_K_Khalifa_M_3014_r2/admin/admin_login.php</p>';
         $msg .= '</body></html>';
         mail($recipient, $subject, $msg, $headers);
