@@ -3,6 +3,12 @@ References
 ***********
 
 ----------------------------------
+Generate Password
+----------------------------------
+https://stackoverflow.com/questions/6101956/generating-a-random-password-in-php
+https://gist.github.com/zyphlar/7217f566fc83a9633959
+
+----------------------------------
 Encrypt and Store Password
 ----------------------------------
 
