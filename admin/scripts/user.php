@@ -23,8 +23,26 @@ function createUser($fname, $username, $password, $email) {
     // otherwise, return an error message
 
     if($create_user_result) {
-        redirect_to('index.php');
+        //redirect_to('index.php');
+        $from = "mariam.khalifa.gabr@gmail.com";
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers = "Content-type: text/html\r\n";
+        $headers .= 'From: '.$from."\r\n".
+            'Reply-To: '.$fname. '<'.$email.'>' . "\r\n".
+            'X-Mailer: PHP/' . phpversion();
+        $recipient = $email;
+        $subject = "Hello, Your Account Info.";
+        $msg = '<html><body>';
+        $msg .= '<h1>Hello <?php echo $fname; ?></h1>';
+        $msg .= '<p>The website admin has created an account for you.</p>';
+        $msg .= '<p>Your username is: <?php echo $username; ?></p>';
+        $msg .= '<p>Your password is: <?php echo $password; ?></p>';
+        $msg .= '<p>This is the url where you can login: http://localhost/movies_cms/admin/admin_login.php</p>';
+        $msg .= '</body></html>';
+        mail($recipient, $subject, $msg, $headers);
     }else{
         return 'This individul sucks!';
     }
+
+    
 }
