@@ -5,14 +5,13 @@
     if(isset($_POST['submit'])){
         $fname = trim($_POST['fname']);
         $username = trim($_POST['username']);
-        $password = trim($_POST['password']);
         $email = trim($_POST['email']);
 
-        if(empty($fname) || empty($username) || empty($password) || empty($email)) {
+        if(empty($fname) || empty($username) || empty($email)) {
             $message = 'Please fill required fields!';
         }else{
-            //All data pre processednd ready to go
-            $message = createUser($fname, $username, $password, $email); 
+            //All data pre processed and ready to go
+            $message = createUser($fname, $username, $email); 
         }
     }
 ?>
@@ -32,8 +31,8 @@
         <input type="text" name="fname" value=""><br>
         <label>Username::</label>
         <input type="text" name="username" value=""><br>
-        <label>Password:</label>
-        <input type="text" name="password" value=""><br>
+        <!-- <label>Password:</label>
+        <input type="text" name="password" value=""><br> -->
         <label>Email:</label>
         <input type="email" name="email" value=""><br>
         <button type="submit" name="submit">Create User</button>

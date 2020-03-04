@@ -17,7 +17,7 @@ function generatePassword($length){
     return substr(preg_replace("/[^a-zA-Z0-9]/", "", base64_encode(getRandomBytes($length+1))),0,$length);
 }
 
-function createUser($fname, $username, $password, $email) {
+function createUser($fname, $username, $email) {
     $pdo = Database::getInstance()->getConnection();
     $new_password = generatePassword(8);
     $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
