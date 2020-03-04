@@ -3,7 +3,7 @@ References
 ***********
 
 ----------------------------------
-Generate and Store Password
+Encrypt and Store Password
 ----------------------------------
 
 https://www.php.net/manual/en/function.password-hash.php
