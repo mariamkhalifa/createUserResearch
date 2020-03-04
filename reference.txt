@@ -1,1 +1,16 @@
-https://www.w3schools.com/php/func_string_md5.asp
+
+References
+***********
+
+----------------------------------
+Generate and Store Password
+----------------------------------
+
+https://www.php.net/manual/en/function.password-hash.php
+https://www.php.net/manual/en/function.crypt.php
+https://stackoverflow.com/questions/10281373/hash-vs-crypt-function-comparison
+https://auth0.com/blog/hashing-passwords-one-way-road-to-security/
+https://stackoverflow.com/questions/5584620/what-is-salt-and-how-do-i-use-it
+https://stackoverflow.com/questions/30279321/how-to-use-phps-password-hash-to-hash-and-verify-passwords
+https://www.geeksforgeeks.org/php-md5-sha1-hash-functions/
+
