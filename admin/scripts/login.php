@@ -24,8 +24,11 @@ function login($username, $password, $ip){
             ':username'=>$username
         )
     );
+
     $user = $user->fetch(PDO::FETCH_ASSOC);
+    // pull hashed password from database
     $hashed_password = $user['user_pass'];
+    // re-encrypts pass to verify if password matches hashed pass in database
     if(password_verify($password,$hashed_password)){
         $verified_password = $hashed_password;
 

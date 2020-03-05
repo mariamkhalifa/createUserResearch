@@ -43,7 +43,7 @@ function createUser($fname, $username, $email) {
         )
     );
 
-    echo $fname . ' ' . $username . ' ' . $new_password;
+    // echo $fname . ' ' . $username . ' ' . $new_password;
 
     // based on the execution result, if everything goes through
     // redirect to the index.php
@@ -68,6 +68,6 @@ function createUser($fname, $username, $email) {
         mail($recipient, $subject, $msg, $headers);
         return $create_user_message = '<p>Thank you. We have sent an email to the new user with their login information!</p><a href="index.php">Go Back</a>';
     }else{
-        return 'This individul sucks! But they are trying their best :)';
+        return 'This individual sucks! But they are trying their best :)';
     }
 }
