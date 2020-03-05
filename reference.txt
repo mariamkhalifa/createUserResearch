@@ -25,4 +25,5 @@ https://www.geeksforgeeks.org/php-md5-sha1-hash-functions/
 https://stackoverflow.com/questions/33108720/password-hash-returns-different-value-every-time/33109078
 https://stackoverflow.com/questions/25380204/matching-users-password-with-hashed-password-stored-in-db
 https://www.php.net/manual/en/function.password-verify.php
+https://code-boxx.com/simple-password-encryption-php/#sec-php
 
